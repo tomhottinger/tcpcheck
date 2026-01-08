@@ -159,14 +159,14 @@ Test:
 pyinstaller `
   --onefile `
   --clean `
-  --name tcpcheck `
+  --name tcpcheckWin32 `
   tcpcheck.py
 ```
 
 Ergebnis:
 
 ```
-dist\tcpcheck.exe
+dist\tcpcheckWin32.exe
 ```
 
 Test:
@@ -174,6 +174,12 @@ Test:
 ```powershell
 dist\tcpcheck.exe --help
 ```
+
+**Crosscompilierung ist nicht möglich, die exes sind aber im dist/ Verzeichnis**
+
+Anmerkung: 
+Die Exes sind relativ gross, da alle Dependencies eingebaut sind. Daher dauert der erste Start auch relativ lange. 
+Wenn Dich das stört, dann kannst Du die Binaries anders kompilieren. Konsultiere die [pyinstaller Doku](https://pyinstaller.org/en/stable/)  dafür.
 
 ---
 
