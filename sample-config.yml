@@ -1,0 +1,33 @@
+options:
+  parallel: 10
+  format: text
+
+defaults:
+  timeout_s: 3.0
+  retries: 2
+  retry_delay_s: 0.3
+
+targets:
+  - name: web-https
+    host: example.com
+    port: 443
+    mode: tls
+    tls:
+      server_name: example.com
+      verify: true
+
+  - name: smtp-probe
+    host: mail.example.com
+    port: 25
+    mode: probe
+    probe:
+      send_text: "EHLO test\r\n"
+      expect: "250"
+      expect_is_regex: false
+      recv_bytes: 4096
+      read_timeout_s: 2.0
+
+  - name: plain-connect
+    host: 10.0.0.5
+    port: 5432
+    mode: connect
